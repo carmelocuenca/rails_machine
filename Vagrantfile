@@ -95,7 +95,8 @@ Vagrant.configure("2") do |config|
     echo 'Installing Postgresql...'
     sudo apt-get install -y libpq-dev
     sudo docker pull postgres
-    sudo docker run -p 5432:5432 -e POSTGRES_PASSWORD=password -d postgres
+    sudo docker run --name some-postgres -p 5432:5432 \
+      -e POSTGRES_PASSWORD=password -d postgres
 
     sudo apt-get autoremove -y
   SHELL

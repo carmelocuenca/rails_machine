@@ -47,14 +47,19 @@ vagrant@...:~$  rails new first_app --skip-turbolinks --skip-spring \
 vagrant@...:~$ cd first_app
 ```
 
-4. Cambiar el fichero de configuración de base de datos `config/database.yml` para la configuación
+4. PostreSQL fue instalado con usurio "postgres' y password "password".
+Una opción es cambiar el fichero de configuración de base de datos `config/database.yml` para la configuación
 de *development* y *test*. Cuidado con las indentaciones del fichero `.yml`
 ```
 host: localhost
 username: postgres
 password: password
 ```
-
+O bien crear el usuario con la contraseña apropiada. Por ejemplo, para un usario "skywalker"
+y contraseña "R2D2"
+```
+$ sudo docker run -it --rm -e PGPASSWORD="password" --link some-postgres:postgres postgres psql -h postgres -U postgres -c "create user skywalker password 'RDD2' "
+```
 5. Compureba la aplicación
 lanzando el servidor *RoR* en la MV y accede desde la máquina anfitrión
 ```
