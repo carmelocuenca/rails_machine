@@ -55,10 +55,9 @@ host: localhost
 username: postgres
 password: password
 ```
-O bien crear el usuario con la contraseña apropiada. Por ejemplo, para un usario "skywalker"
-y contraseña "R2D2"
+O bien crear el usuario con la contraseña apropiada. Por ejemplo, para un usario "skywalker" y contraseña "R2D2"
 ```
-$ sudo docker run -it --rm -e PGPASSWORD="password" --link some-postgres:postgres postgres psql -h postgres -U postgres -c "create user skywalker password 'RDD2' "
+vagrant@...:~$ sudo docker run -it --rm -e PGPASSWORD="password" --link some-postgres:postgres postgres psql -h postgres -U postgres -c "create user skywalker password 'RDD2' "
 ```
 5. Compureba la aplicación
 lanzando el servidor *RoR* en la MV y accede desde la máquina anfitrión
