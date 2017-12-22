@@ -78,7 +78,7 @@ Vagrant.configure("2") do |config|
 
     # Ruby
     echo 'Installing Ruby...'
-    rvm use --default --install 2.4.1
+    rvm use --default --install 2.3.1
 
     # Docker CE
     echo 'Installing Docker CE...'
@@ -94,9 +94,8 @@ Vagrant.configure("2") do |config|
     # Postgresql
     echo 'Installing Postgresql...'
     sudo apt-get install -y libpq-dev
-    sudo docker pull postgres
     sudo docker run --name some-postgres -p 5432:5432 \
-      -e POSTGRES_PASSWORD=password -d postgres
+      -e POSTGRES_PASSWORD=password -d postgres:9.6
 
     sudo apt-get autoremove -y
   SHELL

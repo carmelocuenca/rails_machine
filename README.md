@@ -2,7 +2,7 @@
 Este `Vagrantfile` crea una máquina virtual (MV) para VirtualBox (VB) instalando
 
 - Ruby Versión Manager (RVM)
-- La versión de Ruby estable 2.4.1
+- La versión de Ruby estable 2.3.1
 - Docker Community Edition (Docker CE )
 - PostgreSQL a través de la imagen oficial de PostgresSQL en Docker Hub.
 
@@ -31,7 +31,7 @@ vagrant@...:~$
 
 2. En la MV crea un *gemset* para la aplicación para instalar *RoR*
 ```
-vagrant@...:~$ rvm gemset use ruby-2.4.1@first_app --create
+vagrant@...:~$ rvm gemset use ruby-2.3.1@first_app --create
 ...
 vagrant@...:~$ gem install rails --no-ri --no-rdoc # Sé paciente...
 ...
@@ -40,7 +40,7 @@ vagrant@...:~$ gem install rails --no-ri --no-rdoc # Sé paciente...
 3. Crear la aplicación en el directorio compartido con la máquina anfitrión.
 En este ejemplo la aplicación se llama `first_app`
 ```
-vagrant@...:~$ rvm gemset use 2.4.1@first
+vagrant@...:~$ rvm gemset use 2.3.1@first
 vagrant@...:~$ cd /vagrant
 vagrant@...:~$  rails new first_app --skip-turbolinks --skip-spring \
   --skip-test -d postgresql
@@ -55,9 +55,9 @@ host: localhost
 username: postgres
 password: password
 ```
-O bien crear el usuario con la contraseña apropiada. Por ejemplo, para un usario "skywalker" y contraseña "R2D2"
+O bien crear el usuario con la contraseña apropiada. Por ejemplo, para un super usuario "skywalker" y contraseña "RDD2"
 ```
-vagrant@...:~$ sudo docker run -it --rm -e PGPASSWORD="password" --link some-postgres:postgres postgres psql -h postgres -U postgres -c "create user skywalker password 'RDD2' "
+vagrant@...:~$ sudo docker run -it --rm -e PGPASSWORD="password" --link some-postgres:postgres postgres:9.6 psql -h postgres -U postgres -c "create user skywalker with superuser password 'RDD2';"
 ```
 5. Compureba la aplicación
 lanzando el servidor *RoR* en la MV y accede desde la máquina anfitrión
